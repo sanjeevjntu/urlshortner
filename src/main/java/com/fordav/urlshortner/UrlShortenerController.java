@@ -1,12 +1,11 @@
 package com.fordav.urlshortner;
 
-import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.validator.routines.UrlValidator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.charset.StandardCharsets;
@@ -28,7 +27,7 @@ public class UrlShortenerController {
         return longUrl;
     }
 
-    @PostMapping("/createShortUrl")
+    @PostMapping(value = "/createShortUrl", produces = MediaType.APPLICATION_JSON_VALUE)
     public String createShortUrl(@RequestBody String longUrl) {
         UrlValidator urlValidator = new UrlValidator(new String[]{"http", "https"});
 
