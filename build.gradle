@@ -28,7 +28,7 @@ dependencies {
     // https://mvnrepository.com/artifact/commons-validator/commons-validator
     compile group: 'commons-validator', name: 'commons-validator', version: '1.6'
     // https://mvnrepository.com/artifact/com.google.guava/guava
-    compile group: 'com.google.guava', name: 'guava', version: '18.0'
+    compile group: 'com.google.guava', name: 'guava', version: '28.2-jre'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'

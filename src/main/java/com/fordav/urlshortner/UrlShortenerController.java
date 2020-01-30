@@ -17,17 +17,17 @@ public class UrlShortenerController {
 
     private final StringRedisTemplate redisTemplate;
 
-    @GetMapping("/{id}")
+    @GetMapping("/v1/{id}")
     public String getLongUrl(@PathVariable String id) {
         String longUrl = redisTemplate.opsForValue().get(id);
         log.info("Getting longUrl: {}", longUrl);
-        if (id == null) {
-            throw new RuntimeException("There is not Short Url is not found");
+        if (longUrl == null) {
+            throw new RuntimeException("There url not found for the given id");
         }
         return longUrl;
     }
 
-    @PostMapping(value = "/createShortUrl", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/v1/createShortUrl")
     public String createShortUrl(@RequestBody String longUrl) {
         UrlValidator urlValidator = new UrlValidator(new String[]{"http", "https"});
 
